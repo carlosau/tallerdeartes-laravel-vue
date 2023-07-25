@@ -7,5 +7,10 @@ use Illuminate\Http\Request;
 
 class CursoController extends Controller
 {
-    //
+    //INDEX
+    public function index()
+    {
+        return response()->json('Cursos Index!');
+    }
+
 }
