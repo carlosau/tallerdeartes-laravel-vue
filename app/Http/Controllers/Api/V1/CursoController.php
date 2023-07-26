@@ -14,7 +14,7 @@ class CursoController extends Controller
     //GET ALL CURSOS
     public function index()
     {
-        return new CursoCollection(Curso::paginate(1));
+        return new CursoCollection(Curso::all());
     }
 
     //STORE
