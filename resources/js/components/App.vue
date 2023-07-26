@@ -1,15 +1,22 @@
-<template>
-    <h2>{{greetings}} Carlos from Vue JS</h2>
-    <br>
-    <input type="text" v-model="greetings">
-</template>
+<script setup>
+import { ref, onMounted } from 'vue'
 
-<script>
-    export default{
-        data() {
-            return {
-                greetings: ''
-            }
-        }
-    }
+//reactive state
+const count = ref(0)
+
+//functions that mutate state and trigger updates
+function increment() {
+    count.value++
+}
+
+//lifecycle hooks
+onMounted(() => {
+    console.log(`The initial count is ${count.value}.`)
+}
+)
 </script>
+
+
+<template>
+    <button @click="increment">Count is: {{ count }}</button>
+</template>
