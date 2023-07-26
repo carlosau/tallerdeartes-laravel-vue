@@ -36,4 +36,11 @@ class CursoController extends Controller
     {
         return new CursoResource($curso);
     }
+
+    //DELETE CURSO
+    public function destroy(Curso $curso)
+    {
+        $curso->delete();
+        return response()->json('Curso deleted!');
+    }
 }
