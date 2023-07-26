@@ -22,4 +22,10 @@ class CursoController extends Controller
         return response()->json('Curso Criado!');
     }
 
+    //UPDATE
+    public function update(StoreCursoRequest $request, Curso $curso)
+    {
+        $curso->update($request->validated());
+        return response()->json('Curso Updated!');
+    }
 }

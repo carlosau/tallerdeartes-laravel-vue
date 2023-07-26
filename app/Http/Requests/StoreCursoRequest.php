@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Unique;
 
 class StoreCursoRequest extends FormRequest
 {
@@ -22,15 +23,16 @@ class StoreCursoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category' => ['required'],
-           'title' => ['required', 'min:6', 'max:40'],
-            'description' => ['required', 'min:40', 'max:650'],
-            'slug' => ['required', 'unique:cursos,slug'],
-            'vsl' => ['required'],
-            'author' => ['required'],
-            'format' => ['required'],
-            'subscription' => ['required'],
-            'price' => ['required'],
+            'id_hotmart' => ['sometimes', 'required'],
+            'category' => ['sometimes', 'required'],
+           'title' => ['sometimes', 'required', 'min:6', 'max:40'],
+            'description' => ['sometimes', 'required', 'min:40', 'max:650'],
+            'slug' => ['sometimes', 'required', (new Unique('cursos'))->ignore($this->curso)],
+            'vsl' => ['sometimes', 'required'],
+            'author' => ['sometimes', 'required'],
+            'format' => ['sometimes', 'required'],
+            'subscription' => ['sometimes', 'required'],
+            'price' => ['sometimes', 'required'],
         ];
     }
 }
