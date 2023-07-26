@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Curso;
 use App\Http\Requests\StoreCursoRequest;
 use App\Http\Resources\V1\CursoResource;
+use App\Http\Resources\V1\CursoCollection;
 
 class CursoController extends Controller
 {
     //GET ALL CURSOS
     public function index()
     {
-        return CursoResource::collection(Curso::all());
+        return new CursoCollection(Curso::paginate(1));
     }
 
     //STORE
